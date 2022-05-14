@@ -1,16 +1,14 @@
 import React from 'react';
 import {FlatList} from 'react-native';
-import {addressesDummyData, smsDummyData} from '../../temp/dummyData';
-import {SMSListItem} from './components/SMSListItem';
+import {addressesDummyData, SMSesDummyData} from '../../../temp/dummyData';
+import {AddressListItem} from './components/SMSListItem';
 import {View, StyleSheet} from 'react-native';
 
 export const Home = () => {
-  const sortedReadSMSData = smsDummyData.sort(
-    (sms1, sms2) => sms2.date - sms1.date,
-  );
-  const smsListData = addressesDummyData.map(address =>
-    sortedReadSMSData.find(sms => sms.address === address),
-  );
+  const firstSMSOfEachAddress = addressesDummyData
+    .map(address => SMSesDummyData.find(sms => sms.address === address))
+    .filter(SMS => !!SMS)
+    .sort((sms1, sms2) => sms2.date - sms1.date);
 
   const ItemSeparaor = () => {
     return <View style={styles.separator} />;
@@ -19,9 +17,9 @@ export const Home = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={smsListData}
+        data={firstSMSOfEachAddress}
         keyExtractor={item => item._id}
-        renderItem={({item}) => <SMSListItem data={item} />}
+        renderItem={({item}) => <AddressListItem data={item} />}
         ItemSeparatorComponent={ItemSeparaor}
       />
     </View>
