@@ -1,15 +1,14 @@
 import React from 'react';
 import {FlatList} from 'react-native';
-import {ReadSMSData} from '../../data';
+import {addressesDummyData, smsDummyData} from '../../temp/dummyData';
 import {SMSListItem} from './components/SMSListItem';
 import {View, StyleSheet} from 'react-native';
 
 export const Home = () => {
-  const sortedReadSMSData = ReadSMSData.sort(
+  const sortedReadSMSData = smsDummyData.sort(
     (sms1, sms2) => sms2.date - sms1.date,
   );
-  const addresses = Array.from(new Set(ReadSMSData.map(sms => sms.address)));
-  const smsListData = addresses.map(address =>
+  const smsListData = addressesDummyData.map(address =>
     sortedReadSMSData.find(sms => sms.address === address),
   );
 
