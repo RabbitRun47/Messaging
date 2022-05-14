@@ -1,1 +1,2 @@
+- [ ] all SMSes of one address view
 - [ ] picking new address from recieved sms
