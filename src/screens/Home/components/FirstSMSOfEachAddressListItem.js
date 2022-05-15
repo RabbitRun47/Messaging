@@ -1,9 +1,9 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, TouchableNativeFeedback} from 'react-native';
 import {format, isSameDay, isSameYear} from 'date-fns';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-export const AddressListItem = ({data}) => {
+export const FirstSMSOfEachAddressListItem = ({data, onClick}) => {
   const date = new Date(data.date);
   const currentDate = new Date();
   let displayDateFormat = 'h:mm aaa';
@@ -14,20 +14,22 @@ export const AddressListItem = ({data}) => {
     }
   }
   return (
-    <View style={styles.container}>
-      <View style={styles.icon}>
-        <Icon size={20} name="user-alt" color={'white'} />
-      </View>
-      <View style={styles.textContainer}>
-        <View style={styles.header}>
-          <Text style={styles.address}>{data.address}</Text>
-          <Text style={styles.date}>{format(date, displayDateFormat)}</Text>
+    <TouchableNativeFeedback onPress={onClick}>
+      <View style={styles.container}>
+        <View style={styles.icon}>
+          <Icon size={20} name="user-alt" color={'white'} />
         </View>
-        <Text style={styles.body} numberOfLines={2}>
-          {data.body}
-        </Text>
+        <View style={styles.textContainer}>
+          <View style={styles.header}>
+            <Text style={styles.address}>{data.address}</Text>
+            <Text style={styles.date}>{format(date, displayDateFormat)}</Text>
+          </View>
+          <Text style={styles.body} numberOfLines={2}>
+            {data.body}
+          </Text>
+        </View>
       </View>
-    </View>
+    </TouchableNativeFeedback>
   );
 };
 
