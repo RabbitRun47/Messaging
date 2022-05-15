@@ -3,7 +3,7 @@ import {Text, View, StyleSheet, TouchableNativeFeedback} from 'react-native';
 import {format, isSameDay, isSameYear} from 'date-fns';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-export const FirstSMSOfEachAddressListItem = ({data, onClick}) => {
+export const FirstMessageOfEachAddressListItem = ({data, onClick}) => {
   const date = new Date(data.date);
   const currentDate = new Date();
   let displayDateFormat = 'h:mm aaa';
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 5,
+    paddingVertical: 5,
   },
   icon: {
     width: 40,

@@ -1,2 +1,4 @@
-- [ ] all SMSes of one address view
+- [ ] all messages of one address view
+    - [ ] differentiation of sent and recieved messages
+- [ ] diff color user icons
 - [ ] picking new address from recieved sms
